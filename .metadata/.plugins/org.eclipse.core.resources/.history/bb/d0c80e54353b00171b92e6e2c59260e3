@@ -1,0 +1,32 @@
+<div>
+	<h2>User Info</h2>
+	<div>
+		<p />
+		UserId : <input type="text" placeholder="Username" ng-model="userid"
+			required />
+		<button ng-click="getDetails()">Get Details</button>
+		<p />
+
+		<div ng-show="!error">
+
+			<table>
+				<tr>
+					<th>Login</th>
+					<th>Location</th>
+					<th>Time Created</th>
+					<th>Image</th>
+				</tr>
+				<tr>
+					<td>{{login}}</td>
+					<td>{{location}}</td>
+					<td>{{created}}</td>
+					<td><img ng-src="{{imageurl}}" /></td>
+				</tr>
+			</table>
+			</table>
+		</div>
+
+		<div ng-show="error">Error : {{result}}</div>
+
+	</div>
+</div>

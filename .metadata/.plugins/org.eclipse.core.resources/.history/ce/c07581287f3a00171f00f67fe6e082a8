@@ -1,0 +1,16 @@
+var app = angular.module("gitRep", []);
+
+var ctrl2 = function ($scope, $http) {
+	
+    var onSuccess = function (response) {
+        $scope.user = response.data.login;
+    };
+    
+    var onError = function (error) {
+    	alert("Sorry! Could not get details from GitHub!");
+    };
+    
+        $http.get("https://api.github.com"++"/repos").then(onSuccess, onError);
+};
+
+app.controller("ctrl2", ["$scope", "$http",ctrl2]);

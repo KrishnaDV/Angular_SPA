@@ -1,0 +1,18 @@
+var app = angular.module("first", []);
+
+app.controller("FirstController", function($scope) {
+	$scope.msg = "Vishal";
+	$scope.day = new Date().toString();
+});
+
+
+app.controller("SecondController", function($scope) {
+	$scope.firstname = "Vis";
+	$scope.lastname = "Dan";
+	$scope.fullname = function(){
+		
+		return $scope.firstname+" "+$scope.lastname;
+		
+	};
+});
+

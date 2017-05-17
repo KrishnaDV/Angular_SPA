@@ -1,0 +1,27 @@
+var app = angular.module('github', ['ngRoute']);
+
+app.config(function($routeProvider) {
+    $routeProvider
+
+        // route for the user info page
+        .when('/UserInfo', {
+            templateUrl : 'UserInfo.html',
+            controller  : 'mainController'
+        })
+
+        // route for the list users page
+        .when('/ListUsers', {
+            templateUrl : 'ListUsers.html',
+            controller  : 'aboutController'
+        })
+
+        // route for the repository page
+        .when('/RepoDetails', {
+            templateUrl : 'RepoDetails.html',
+            controller  : 'contactController'
+        })	
+        
+        .otherwise({
+            redirectTo: '/Main'
+        });
+});

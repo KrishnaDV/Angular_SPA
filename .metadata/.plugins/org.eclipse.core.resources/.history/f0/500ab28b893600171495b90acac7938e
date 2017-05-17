@@ -1,0 +1,8 @@
+var app = angular.module("first",[]);
+
+app.controller("FirstController",function($scope)({
+
+	
+	
+	
+});

@@ -1,0 +1,12 @@
+var ctrl1 = function ($scope, $http) {
+	
+    var onSuccess = function (response) {
+        $scope.users = response.data;
+    };
+    
+    var onError = function (error) {
+    	alert("Sorry! Could not get details from GitHub!");
+    };
+    
+        $http.get("https://api.github.com/users").then(onSuccess, onError);
+};

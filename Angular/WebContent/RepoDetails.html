@@ -1,0 +1,10 @@
+<div>
+<h2>List of Repostories</h2>
+		<input type="text" placeholder="Username" ng-model="user" />
+		<button ng-click="getRepos()">Get Repos</button>
+		<p />
+		<ul>
+			<li ng-repeat="repo in repos"><a ng-href="{{repo.html_url}}">{{repo.name}}</a>
+				{{repo.description}} - {{repo.size}}</li>
+		</ul>
+</div>

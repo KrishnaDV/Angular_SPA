@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="first">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+<script src="lib/angdemo.js"></script>
+<title>Insert title here</title>
+</head>
+<body >
+<div>
+         <label>Name:</label>
+         <input type = "text" ng-model = "yourName">
+         <hr />
+         
+         <h1>Hello {{yourName}}!</h1>
+      </div>
+      
+
+</body>
+</html>

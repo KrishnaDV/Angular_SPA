@@ -1,0 +1,89 @@
+var app = angular.module('github', ['ngRoute']);
+
+app.config(function($routeProvider) {
+    $routeProvider
+
+        // route for the user info page
+        .when('/UserInfo', {
+            templateUrl : 'UserInfo.html',
+            controller  : 'firstController'
+        })
+
+        // route for the list users page
+        .when('/ListUsers', {
+            templateUrl : 'ListUsers.html',
+            controller  : 'secondController'
+        })
+
+        // route for the repository page
+        .when('/RepoDetails', {
+            templateUrl : 'RepoDetails.html',
+            controller  : 'thirdController'
+        })	
+        
+        .otherwise({
+            redirectTo: '/Main'
+        });
+});
+
+
+app.controller('firstController',function ($scope, $http) {
+	
+    $scope.userid = "";
+    
+    $scope.error = false;
+    
+    var onSuccess = function (response) {
+        $scope.login = response.data.login;
+        $scope.imageurl = response.data.avatar_url;
+        $scope.created = response.data.created_at;
+        $scope.location = response.data.location;
+        $scope.error = false;
+    };
+    
+    var onError = function (error) {
+        $scope.error = true;
+        if (error.status == 404)
+            $scope.result = "Sorry! User not found!";
+        else
+            $scope.result = "Sorry! Error : " + error.statusText;
+        
+    };
+    
+    $scope.getDetails = function () {
+        $http.get("https://api.github.com/users/" + $scope.userid)
+             .then(onSuccess, onError);
+    }
+});
+
+
+app.controller('secondController',function ($scope, $http) {
+	
+    var onSuccess = function (response) {
+        $scope.users = response.data;
+    };
+    
+    var onError = function (error) {
+    	alert("Sorry! Could not get details from GitHub!");
+    };
+    
+        $http.get("https://api.github.com/users").then(onSuccess, onError);
+});
+
+app.controller('thirdController',function ($scope, $http) {
+	
+	$scope.user = "dkvishal";
+	
+    var onSuccess = function (response) {
+        $scope.repos = response.data;
+    };
+    
+    var onError = function (error) {
+    	$scope.repos = null;
+    	alert("Sorry! Could not get details about repo");
+    };
+    
+    $scope.getRepos = function(){
+        $http.get("https://api.github.com/users/"+$scope.user+"/repos").then(onSuccess, onError);
+    	}
+});
